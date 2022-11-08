@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import * as Highcharts from 'highcharts/highstock';
+import * as Highcharts from 'highcharts/highstock.src';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsOfflineExporting from 'highcharts/modules/offline-exporting';
 import HighchartsBoost from 'highcharts/modules/boost';

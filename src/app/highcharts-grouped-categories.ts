@@ -1,5 +1,5 @@
 // @ts-nocheck
-import * as Highcharts from 'highcharts/highstock';
+import * as Highcharts from 'highcharts/highstock.src';
 
 export default function(HC: typeof Highcharts) {
   /**
