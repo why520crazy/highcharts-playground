@@ -48,16 +48,16 @@ export class AppComponent implements OnInit {
             name: '项目1',
             categories: [
               {
-                name: 'Sprint 01Sprint 01Sprint 01Sprint 01Sprint 01Sprint 01Sprint 01Sprint 01',
-                categories: ['重要', '一般', '不重要'],
+                name: '测试迭代回顾 名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长 ',
+                categories: ['2019-02-02', '2019-02-03', '2019-02-04'],
               },
               {
                 name: 'Sprint 02',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-05', '2019-02-06', '2019-02-07'],
               },
               {
                 name: 'Sprint 03',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-08', '2019-02-09', '2019-02-10'],
               },
             ],
           },
@@ -66,15 +66,15 @@ export class AppComponent implements OnInit {
             categories: [
               {
                 name: 'Sprint 01',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-08', '2019-02-09', '2019-02-10'],
               },
               {
                 name: 'Sprint 02',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-08', '2019-02-09', '2019-02-10'],
               },
               {
                 name: 'Sprint 03',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-08', '2019-02-09', '2019-02-10'],
               },
             ],
           },
@@ -83,20 +83,44 @@ export class AppComponent implements OnInit {
             categories: [
               {
                 name: 'Sprint 10',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-11', '2019-02-12', '2019-02-13'],
               },
               {
                 name: 'Sprint 11',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-14', '2019-02-15', '2019-02-16'],
               },
               {
                 name: 'Sprint 12',
-                categories: ['重要', '一般', '不重要'],
+                categories: ['2019-02-17', '2019-02-18', '2019-02-19'],
               },
             ],
           },
         ],
         crosshair: true,
+        labels: {
+          //  分组的每层样式, 只有一部分是好的, 比如:formatter 第二层级是无效的
+          groupedOptions: [
+            {
+              style: {
+                maxWidth: '70px',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+              },
+            },
+            {
+              style: {
+                maxWidth: '70px',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+              },
+              rotation: 0,
+            },
+          ],
+          // 格式化 x轴(格式化为日期为:02-02)
+          formatter: function () {
+            return this.value;
+          },
+        },
       },
       yAxis: {
         title: {
