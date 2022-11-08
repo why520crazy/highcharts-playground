@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   constructor(private zone: NgZone) {}
 
   ngOnInit(): void {
-    const options = {
+    const options: Highcharts.Options = {
       chart: {
         type: 'column',
       },
@@ -117,11 +117,19 @@ export class AppComponent implements OnInit {
             },
           ],
           // 格式化 x轴(格式化为日期为:02-02) : 难点  无法判断this.value是哪个维度的, 因为项目名称也可能写成 2020-02-03 得字符串,无法根据值是否可以转换为日期类型去判断
-          formatter: function () {
+          formatter: function (
+            ctx: Highcharts.AxisLabelsFormatterContextObject
+          ) {
+            // ctx label 有值得时候一般是分组，主要是 highcharts-grouped-categories 设置的
+            // ctx tick 有值是日期第一次调用，也是 highcharts-grouped-categories 设置的
+            if (!ctx.tick && !(ctx as any)['label'] && ctx.value) {
+              // 日期格式
+              return ctx.value + ' 日期';
+            }
             return (this as any)['value'];
           },
         },
-      },
+      } as unknown as Array<Highcharts.XAxisOptions>,
       yAxis: {
         title: {
           useHTML: true,
@@ -172,7 +180,7 @@ export class AppComponent implements OnInit {
             4.57,
           ],
         },
-      ],
+      ] as Array<Highcharts.SeriesOptionsType>,
     };
     this.zone.runOutsideAngular(() => {
       this.chart = Highcharts.chart(
