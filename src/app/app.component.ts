@@ -116,7 +116,7 @@ export class AppComponent implements OnInit {
               rotation: 0,
             },
           ],
-          // 格式化 x轴(格式化为日期为:02-02)
+          // 格式化 x轴(格式化为日期为:02-02) : 难点  无法判断this.value是哪个维度的, 因为项目名称也可能写成 2020-02-03 得字符串,无法根据值是否可以转换为日期类型去判断
           formatter: function () {
             return (this as any)['value'];
           },
