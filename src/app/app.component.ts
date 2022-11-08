@@ -118,7 +118,7 @@ export class AppComponent implements OnInit {
           ],
           // 格式化 x轴(格式化为日期为:02-02)
           formatter: function () {
-            return this.value;
+            return (this as any)['value'];
           },
         },
       },
