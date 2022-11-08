@@ -10,10 +10,8 @@ import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsOfflineExporting from 'highcharts/modules/offline-exporting';
 import HighchartsBoost from 'highcharts/modules/boost';
 import HighchartsBoostCanvas from 'highcharts/modules/boost-canvas';
-
-const HighchartsGroupedCategories = require('highcharts-grouped-categories')(
-  Highcharts
-);
+import HighchartsGroupedCategories from './highcharts-grouped-categories';
+HighchartsGroupedCategories(Highcharts);
 
 @Component({
   selector: 'app-root',
@@ -79,7 +77,8 @@ export class AppComponent implements OnInit {
                 categories: ['重要', '一般', '不重要'],
               },
             ],
-          },{
+          },
+          {
             name: '项目3',
             categories: [
               {
