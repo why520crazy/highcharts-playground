@@ -91,6 +91,10 @@ export class AppComponent implements OnInit {
         },
       },
       xAxis: {
+        max: 6,
+        scrollbar: {
+          enabled: true,
+        },
         categories: [
           {
             name: '项目1',
