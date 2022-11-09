@@ -111,8 +111,8 @@ export class AppComponent implements OnInit {
             ],
           },
           {
-            name: '项目2项目2项目2项目2项目2项目',
-            // name: '项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2',
+            // name: '项目2项目2项目2项目2项目2项目',
+            name: '项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2',
             categories: [
               {
                 name: 'Sprint 10',
@@ -153,14 +153,14 @@ export class AppComponent implements OnInit {
           groupedOptions: [
             {
               style: {
-                maxWidth: '70px',
+                // maxWidth: '70px',
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
               },
             },
             {
               style: {
-                maxWidth: '70px',
+                // maxWidth: '70px',
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
               },

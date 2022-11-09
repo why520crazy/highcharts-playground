@@ -469,8 +469,10 @@ export default function(HC: typeof Highcharts) {
         }
         // 控制位置 TODO: 需要根据宽度动态计算
         if(label.xCorr < 0) {
+          let current = this.getPosition(true, this.pos, this.axis.tickmarkOffset);
+          let next = this.getPosition(true, this.pos + category.leaves, this.axis.tickmarkOffset);
           label.xCorr = 10;
-          label.css({left: "10px", width: 100});
+          label.css({left: "10px", width: next.x - current.x - 40});
         }
 
         // tick properties
