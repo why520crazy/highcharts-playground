@@ -11,6 +11,7 @@ import HighchartsOfflineExporting from 'highcharts/modules/offline-exporting';
 import HighchartsBoost from 'highcharts/modules/boost';
 import HighchartsBoostCanvas from 'highcharts/modules/boost-canvas';
 import HighchartsGroupedCategories from './highcharts-grouped-categories';
+import { chartOptionsColor } from './chart-options';
 HighchartsGroupedCategories(Highcharts);
 
 @Component({
@@ -42,12 +43,60 @@ export class AppComponent implements OnInit {
           '<a href="https://www.ssb.no/en/statbank/table/08940/" ' +
           'target="_blank">SSB</a>',
       },
+      tooltip: {
+        shared: true,
+        backgroundColor: 'rgba(0,0,0,.75)',
+        borderRadius: 6,
+        borderWidth: 0,
+        shadow: false,
+        style: {
+          color: '#fff',
+        },
+      },
+      // tooltip: {
+      //   headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+      //   pointFormat:
+      //     '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      //     '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+      //   footerFormat: '</table>',
+      //   shared: true,
+      //   useHTML: true,
+      // },
+      legend: {
+        squareSymbol: true,
+        symbolHeight: 12,
+        symbolWidth: 1,
+        symbolPadding: 11,
+        verticalAlign: 'top',
+        align: 'right',
+        itemStyle: {
+          fontSize: '12px',
+          fontWeight: 'normal',
+          color: chartOptionsColor.legendItemColor,
+          lineHeight: '13px',
+        },
+        navigation: {
+          activeColor: chartOptionsColor.legendNavigationActiveColor,
+          animation: true,
+          arrowSize: 12,
+          inactiveColor: chartOptionsColor.legendInactiveColor,
+          style: {
+            color: chartOptionsColor.textColor,
+            fontSize: '14px',
+          },
+        },
+        useHTML: true,
+        labelFormatter: function () {
+          return `<span class="axis-label" #axisLable>${this.name}</span>`;
+        },
+      },
       xAxis: {
         categories: [
           {
             name: '项目1',
             categories: [
               {
+                // name: 'Sprint 01',
                 name: '测试迭代回顾 名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长名称很长很长 ',
                 categories: ['2019-02-02', '2019-02-03', '2019-02-04'],
               },
@@ -62,18 +111,19 @@ export class AppComponent implements OnInit {
             ],
           },
           {
-            name: '项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2',
+            name: '项目2项目2项目2项目2项目2项目',
+            // name: '项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2项目2',
             categories: [
               {
-                name: 'Sprint 01',
+                name: 'Sprint 10',
                 categories: ['2019-02-08', '2019-02-09', '2019-02-10'],
               },
               {
-                name: 'Sprint 02',
+                name: 'Sprint 11',
                 categories: ['2019-02-08', '2019-02-09', '2019-02-10'],
               },
               {
-                name: 'Sprint 03',
+                name: 'Sprint 12',
                 categories: ['2019-02-08', '2019-02-09', '2019-02-10'],
               },
             ],
@@ -82,15 +132,15 @@ export class AppComponent implements OnInit {
             name: '项目3',
             categories: [
               {
-                name: 'Sprint 10',
+                name: 'Sprint 100',
                 categories: ['2019-02-11', '2019-02-12', '2019-02-13'],
               },
               {
-                name: 'Sprint 11',
+                name: 'Sprint 101',
                 categories: ['2019-02-14', '2019-02-15', '2019-02-16'],
               },
               {
-                name: 'Sprint 12',
+                name: 'Sprint 102',
                 categories: ['2019-02-17', '2019-02-18', '2019-02-19'],
               },
             ],
@@ -98,6 +148,7 @@ export class AppComponent implements OnInit {
         ],
         crosshair: true,
         labels: {
+          useHTML: true,
           //  分组的每层样式, 只有一部分是好的, 比如:formatter 第二层级是无效的
           groupedOptions: [
             {
@@ -136,15 +187,7 @@ export class AppComponent implements OnInit {
           text: 'Million tonnes CO<sub>2</sub>-equivalents',
         },
       },
-      tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat:
-          '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-          '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true,
-      },
+
       plotOptions: {
         column: {
           pointPadding: 0.2,
@@ -156,30 +199,31 @@ export class AppComponent implements OnInit {
           name: 'Oil and gas extraction',
           data: [
             13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56, 14.32, 14.13,
-            13.93, 13.21, 12.16,
+            13.93, 13.21, 12.16, 13.93, 13.21, 12.16, 13.93, 13.21, 12.16,
+            13.93, 13.21, 12.16, 13.93, 13.21, 12.16, 13.93, 13.21, 12.16,
           ],
         },
-        {
-          name: 'Manufacturing industries and mining',
-          data: [
-            12.24, 12.24, 11.95, 12.02, 11.65, 11.96, 11.59, 11.94, 11.96,
-            11.59, 11.42, 11.76,
-          ],
-        },
-        {
-          name: 'Road traffic',
-          data: [
-            10.0, 9.93, 9.97, 10.01, 10.23, 10.26, 10.0, 9.12, 9.36, 8.72, 8.38,
-            8.69,
-          ],
-        },
-        {
-          name: 'Agriculture',
-          data: [
-            4.35, 4.32, 4.34, 4.39, 4.46, 4.52, 4.58, 4.55, 4.53, 4.51, 4.49,
-            4.57,
-          ],
-        },
+        // {
+        //   name: 'Manufacturing industries and mining',
+        //   data: [
+        //     12.24, 12.24, 11.95, 12.02, 11.65, 11.96, 11.59, 11.94, 11.96,
+        //     11.59, 11.42, 11.76,
+        //   ],
+        // },
+        // {
+        //   name: 'Road traffic',
+        //   data: [
+        //     10.0, 9.93, 9.97, 10.01, 10.23, 10.26, 10.0, 9.12, 9.36, 8.72, 8.38,
+        //     8.69,
+        //   ],
+        // },
+        // {
+        //   name: 'Agriculture',
+        //   data: [
+        //     4.35, 4.32, 4.34, 4.39, 4.46, 4.52, 4.58, 4.55, 4.53, 4.51, 4.49,
+        //     4.57,
+        //   ],
+        // },
       ] as Array<Highcharts.SeriesOptionsType>,
     };
     this.zone.runOutsideAngular(() => {

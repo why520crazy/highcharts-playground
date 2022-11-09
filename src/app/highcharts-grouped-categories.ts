@@ -380,10 +380,12 @@ export default function(HC: typeof Highcharts) {
 
     protoTickAddLabel.call(tick);
 
+    console.log(`[addLabel] pos: ${tick.pos}, textStr: ${tick.label.textStr} , `, tick);
     if (!axis.categories || !(category = axis.categories[tick.pos])) {
       return false;
     }
 
+    console.log(category);
     // set label text - but applied after formatter #46
     if (tick.label) {
       formatter = function (ctx) {
@@ -464,6 +466,11 @@ export default function(HC: typeof Highcharts) {
         // css should only be set for non styledMode configuration. #167
         if (label && !chart.styledMode) {
           label.css(mergedCSS);
+        }
+        // 控制位置 TODO: 需要根据宽度动态计算
+        if(label.xCorr < 0) {
+          label.xCorr = 10;
+          label.css({left: "10px", width: 100});
         }
 
         // tick properties
@@ -612,6 +619,7 @@ export default function(HC: typeof Highcharts) {
 
       if (!isNaN(attrs.x) && !isNaN(attrs.y)) {
         group.label.attr(attrs);
+        // group.label?.attr()
 
         if (grid) {
           if (horiz && axis.left < maxPos.x) {
