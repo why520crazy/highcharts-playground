@@ -33,6 +33,10 @@ export class AppComponent implements OnInit {
     const options: Highcharts.Options = {
       chart: {
         type: 'column',
+
+        scrollablePlotArea: {
+          minWidth: 2000,
+        },
       },
       title: {
         text: 'Emissions to air in Norway',
@@ -91,10 +95,10 @@ export class AppComponent implements OnInit {
         },
       },
       xAxis: {
-        max: 6,
-        scrollbar: {
-          enabled: true,
-        },
+        // max: 6,
+        // scrollbar: {
+        //   enabled: true,
+        // },
         categories: [
           {
             name: '项目1',
@@ -171,6 +175,7 @@ export class AppComponent implements OnInit {
               rotation: 0,
             },
           ],
+          rotation: 0,
           // 格式化 x轴(格式化为日期为:02-02) : 难点  无法判断this.value是哪个维度的, 因为项目名称也可能写成 2020-02-03 得字符串,无法根据值是否可以转换为日期类型去判断
           formatter: function (
             ctx: Highcharts.AxisLabelsFormatterContextObject
